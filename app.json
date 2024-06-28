@@ -4,10 +4,10 @@
     "slug": "DoneWithIt",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./app/assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./app/assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -16,12 +16,25 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/WorkSans-Black.ttf",
+            "./assets/fonts/WorkSans-Bold.ttf",
+            "./assets/fonts/WorkSans-Light.ttf",
+            "./assets/fonts/WorkSans-Regular.ttf",
+            "./assets/fonts/WorkSans-SemiBold.ttf"
+          ]
+        }
+      ]
+    ]
   }
 }

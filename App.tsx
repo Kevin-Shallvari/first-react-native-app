@@ -1,20 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  Platform,
+  StatusBar,
+} from "react-native";
+import { WelcomeScreen } from "./app/screens/WelcomeScreen";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { UniversalSafeArea } from "./app/components/UniversalSafeArea";
+import { ImageScreen } from "./app/screens/ImageScreen";
+import { useFonts } from "expo-font";
+import { Error } from "./app/components/Error";
+import { Loading } from "./app/components/Loading";
 
 export default function App() {
+  const [fontsLoaded, fontError] = useFonts({
+    "WorkSans-Black": require("./app/assets/fonts/WorkSans-Black.ttf"),
+  });
+
+  if (fontError) {
+    return <Error />;
+  }
+
+  if (!fontsLoaded && !fontError) {
+    return <Loading />;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <UniversalSafeArea>
+        <WelcomeScreen />
+      </UniversalSafeArea>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
